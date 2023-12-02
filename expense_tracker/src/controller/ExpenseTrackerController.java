@@ -45,6 +45,8 @@ public class ExpenseTrackerController {
     
     Transaction t = new Transaction(amount, category);
     model.addTransaction(t);
+    // Remove the view update here, as the model will handle it
+
     view.update(model);
     return true;
   }
@@ -83,5 +85,12 @@ public class ExpenseTrackerController {
 
     // The undo was disallowed.
     return false;
-  }    
+  }  
+  //adding update methos 
+//   public void update(ExpenseTrackerModel model) {
+//     view.refreshTable(model.getTransactions());
+//     if (model.getMatchedFilterIndices().size() > 0) {
+//         view.highlightRows(model.getMatchedFilterIndices());
+//     }
+// }
 }
