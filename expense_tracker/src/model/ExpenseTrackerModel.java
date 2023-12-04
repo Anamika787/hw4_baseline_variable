@@ -28,12 +28,14 @@ public class ExpenseTrackerModel {
     transactions.add(t);
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
+    stateChanged();
   }
 
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
+    stateChanged();
   }
 
   public List<Transaction> getTransactions() {
@@ -54,6 +56,7 @@ public class ExpenseTrackerModel {
       // For encapsulation, copy in the input list 
       this.matchedFilterIndices.clear();
       this.matchedFilterIndices.addAll(newMatchedFilterIndices);
+      stateChanged();
   }
 
   public List<Integer> getMatchedFilterIndices() {
@@ -82,7 +85,14 @@ public class ExpenseTrackerModel {
     }
       return false;
   }
+public void unregister(ExpenseTrackerModelListener listener)
+{
+  if (listener != null && !containsListener(listener)) {
+        listeners.remove(listener);
+  
+      }
 
+}
   public int numberOfListeners() {
       // For testing, this is one of the methods.
       //
