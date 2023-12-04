@@ -47,7 +47,7 @@ public class ExpenseTrackerController {
     model.addTransaction(t);
     // Remove the view update here, as the model will handle it
 
-    view.update(model);
+    //view.update(model);
     return true;
   }
 
